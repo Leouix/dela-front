@@ -68,7 +68,7 @@ function setMax() {
                     <input type="submit" value="Запрос на вывод">
                 </form>
                 <div class="withdraw-area__fee-info text-system-wallet-notice-bottom-payment">
-                    Комиссия сети будет $1-2 USDT
+                    Комиссия сети составит 1 USDT
                 </div>
 
             </div>
