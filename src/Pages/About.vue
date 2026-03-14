@@ -1,9 +1,13 @@
 <script setup>
 import AppLayout from "../Layouts/AppLayout.vue";
 import axios from "axios";
+import {onMounted} from "vue";
 
-axios.post('/bootstrap').then(response => {
-  console.log({response: response.data});
+onMounted(() => {
+
+  axios.post('/bootstrap').then(response => {
+    console.log({response: response.data});
+  })
 })
 </script>
 
@@ -164,7 +168,5 @@ h4 {
     }
 }
 
-.legal-info-orange {
-    color: orange;
-}
+
 </style>
