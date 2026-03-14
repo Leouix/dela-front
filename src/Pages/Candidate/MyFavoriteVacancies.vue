@@ -5,14 +5,16 @@ import {useFavoriteStore} from "@/stores/favorites.js";
 import {useUtilsStore} from "@/stores/utils.js";
 
 
+import axios from "axios";
+
 const favoriteVacancies = ref([])
 
 const storeFavorite = useFavoriteStore();
 const utilStore = useUtilsStore();
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // favoriteVacancies.value = response.data
+    const response = await axios.post('/api/my/specialist/favorite-vacancies')
+    favoriteVacancies.value = response.data.favoriteVacancies
 }
 
 onMounted(() => {

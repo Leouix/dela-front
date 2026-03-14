@@ -6,6 +6,8 @@ import {onMounted, ref} from "vue";
 import ResponsiveNavLink from "@/components/ResponsiveNavLink.vue";
 import CandidateForm from "@/Pages/Candidate/CandidateForm.vue";
 
+import axios from "axios";
+
 const store = useCandidateStore();
 
 const candidate = ref(null)
@@ -13,10 +15,8 @@ const notes = ref(null)
 const specialistStatistic = ref({ data: {} })
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // candidate.value = response.data.candidate
-    // notes.value = response.data.notes
-    // specialistStatistic.value = response.data.specialistStatistic
+    const response = await axios.post('/api/my/specialist/profile')
+    candidate.value = response.data.candidate
 }
 
 onMounted(() => {

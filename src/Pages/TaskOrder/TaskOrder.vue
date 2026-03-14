@@ -1,10 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useTaskOrderStore} from "@/stores/taskOrder.js";
 import RichEditor from "@/components/RichEditor.vue";
 import {useChatStore} from "@/stores/chatStore.js";
+import axios from "axios";
 
+const route = useRoute();
 
 const taskOrder = ref({ data: {} })
 const orderStatusActionTypes = ref([])
@@ -17,12 +20,8 @@ const chats = ref([])
 const userRole = ref(null)
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // taskOrder.value = response.data.taskOrder
-    // orderStatusActionTypes.value = response.data.orderStatusActionTypes
-    // deadlineStatistics.value = response.data.deadlineStatistics
-    // user.value = response.data.user
-    // chats.value = response.data.chats
+    const response = await axios.post(`/api/task-order/${route.params.slug}`)
+    taskOrder.value = response.data.taskOrder
 }
 
 onMounted(() => {

@@ -3,13 +3,15 @@ import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
 
+import axios from "axios";
+
 const postItems = ref(null)
 
 const utilsStore = useUtilsStore();
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // postItems.value = response.data
+    const response = await axios.post('/api/my/company/my-responses')
+    postItems.value = response.data.postItems
 }
 
 onMounted(() => {

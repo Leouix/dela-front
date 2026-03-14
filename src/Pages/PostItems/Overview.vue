@@ -4,14 +4,16 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import { useUtilsStore } from "@/stores/utils.js";
 
 
+import axios from "axios";
+
 const items = ref([])
 
 const utilsStore = useUtilsStore();
 const textLength = 350;
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // items.value = response.data
+    const response = await axios.post('/api/all-vacancies')
+    items.value = response.data.items
 }
 
 onMounted(() => {

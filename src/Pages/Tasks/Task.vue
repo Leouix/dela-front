@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
 import {useTaskApplicationStore} from "@/stores/task_application.js";
@@ -9,6 +10,9 @@ import {useDragNDropStore} from "@/stores/drag-n-drop.js";
 import TaskApplications from "@/components/TaskApplications.vue";
 import {useTasksStore} from "@/stores/tasks.js";
 import ShowTaskDocuments from "@/components/ShowTaskDocuments.vue";
+import axios from "axios";
+
+const route = useRoute();
 
 const task = ref(null)
 const wasApplied = ref(false)
@@ -18,13 +22,13 @@ const isCurrentUserIsAuthor = ref(false)
 const currentCandidateBanned = ref(false)
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // task.value = response.data.task
-    // wasApplied.value = response.data.wasApplied
-    // isFavoriteTask.value = response.data.isFavoriteTask
-    // taskApplications.value = response.data.taskApplications
-    // isCurrentUserIsAuthor.value = response.data.isCurrentUserIsAuthor
-    // currentCandidateBanned.value = response.data.currentCandidateBanned
+    const response = await axios.post(`/api/overview/task/${route.params.slug}`)
+    task.value = response.data.task
+    wasApplied.value = response.data.wasApplied
+    isFavoriteTask.value = response.data.isFavoriteTask
+    taskApplications.value = response.data.taskApplications
+    isCurrentUserIsAuthor.value = response.data.isCurrentUserIsAuthor
+    currentCandidateBanned.value = response.data.currentCandidateBanned
 }
 
 onMounted(() => {

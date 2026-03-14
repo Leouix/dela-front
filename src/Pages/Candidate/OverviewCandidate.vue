@@ -1,9 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useCandidateStore} from "@/stores/candidate.js";
 
 import {useChatStore} from "@/stores/chatStore.js";
+import axios from "axios";
+
+const route = useRoute();
 
 const candidate = ref(null)
 const isFavorite = ref(false)
@@ -15,13 +19,13 @@ const taskOrderInWorkSlugs = ref([])
 const store = useCandidateStore();
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // candidate.value = response.data.candidate
-    // isFavorite.value = response.data.isFavorite
-    // notes.value = response.data.notes
-    // specialistStatistic.value = response.data.specialistStatistic
-    // ban.value = response.data.ban
-    // taskOrderInWorkSlugs.value = response.data.taskOrderInWorkSlugs
+    const response = await axios.post(`/api/overview/specialist/${route.params.slug}`)
+    candidate.value = response.data.candidate
+    isFavorite.value = response.data.isFavorite
+    notes.value = response.data.notes
+    specialistStatistic.value = response.data.specialistStatistic
+    ban.value = response.data.ban
+    taskOrderInWorkSlugs.value = response.data.taskOrderInWorkSlugs
 }
 
 onMounted(() => {
@@ -87,7 +91,7 @@ const startDialog = async () => {
 </script>
 
 <template>
-    <Head title="Профиль мастера"/>
+
     <AppLayout>
 
         <div class="page content candidate-page">

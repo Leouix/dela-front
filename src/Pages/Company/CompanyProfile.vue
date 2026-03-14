@@ -5,6 +5,8 @@ import {useEditCompanyProfileStore} from "@/stores/editCompanyProfile.js";
 import ResponsiveNavLink from "@/components/ResponsiveNavLink.vue";
 
 
+import axios from "axios";
+
 const company = ref(null)
 const isCompanyFilled = ref(false)
 const noFilledFields = ref([])
@@ -13,11 +15,10 @@ const customerStatistic = ref({ data: {} })
 const store = useEditCompanyProfileStore();
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // company.value = response.data.company
-    // isCompanyFilled.value = response.data.isCompanyFilled
-    // noFilledFields.value = response.data.noFilledFields
-    // customerStatistic.value = response.data.customerStatistic
+    const response = await axios.post('/api/my/company/profile')
+    company.value = response.data.company
+    isCompanyFilled.value = response.data.isCompanyFilled
+    noFilledFields.value = response.data.noFilledFields
 }
 
 onMounted(() => {

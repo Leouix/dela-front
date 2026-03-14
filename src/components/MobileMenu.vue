@@ -1,8 +1,7 @@
 <script setup>
 import {useHeaderStore} from "@/stores/header.js";
-import {usePage} from "@inertiajs/vue3";
+import {getUsePage} from "@/composables/usePage.js";
 import {computed, nextTick, onMounted, onUnmounted, ref, watch} from "vue";
-import ToggleUserMode from "@/components/ToggleUserMode.vue";
 import Auth from "@/components/Auth.vue";
 import {useSupportStore} from "@/stores/support.js";
 
@@ -10,7 +9,7 @@ const supportStore = useSupportStore();
 
 const headerStore = useHeaderStore();
 
-const page = usePage();
+const page = getUsePage();
 const userRole = page.props.auth.user?.mode;
 const modalRef = ref(null);
 

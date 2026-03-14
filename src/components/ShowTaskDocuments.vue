@@ -1,7 +1,7 @@
 <script setup>
 import SwiperShow from "@/components/SwiperShow.vue";
 import DocumentsIconsDownload from "@/components/DocumentsIconsDownload.vue";
-import {usePage} from "@inertiajs/vue3";
+import { getUsePage } from "@/composables/usePage.js";
 import {ref} from "vue";
 import FilePreview from "@/components/FilePreview.vue";
 
@@ -12,7 +12,7 @@ const props = defineProps({
     }
 })
 
-const page = usePage();
+const page = getUsePage();
 
 const user = page.props?.auth?.user;
 ;

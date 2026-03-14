@@ -1,8 +1,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useCandidateStore} from "@/stores/candidate.js";
+import axios from "axios";
 
+const route = useRoute();
 
 const company = ref(null)
 const isFavoriteCompany = ref(false)
@@ -14,23 +17,16 @@ const userRole = ref(null)
 const store = useCandidateStore();
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // company.value = response.data.company
-    // isFavoriteCompany.value = response.data.isFavoriteCompany
-    // customerStatistic.value = response.data.customerStatistic
-    // myself.value = response.data.myself
+    const response = await axios.post(`/api/overview/company-profile/${route.params.slug}`)
+    company.value = response.data.company
+    isFavoriteCompany.value = response.data.isFavoriteCompany
+    myself.value = response.data.myself
 }
 
 onMounted(() => {
     fetchData()
     store.isFavoriteCompany = isFavoriteCompany.value
 })
-
-const title = ref('')
-const description = ref('')
-const location = ref('')
-const count_position_type = ref('')
-const image = ref(null)
 
 </script>
 

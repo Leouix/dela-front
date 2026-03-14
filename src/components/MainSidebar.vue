@@ -2,10 +2,10 @@
 import { useHeaderStore } from "@/stores/header.js";
 import ToggleUserMode from "@/components/ToggleUserMode.vue";
 import { computed } from 'vue';
-import {usePage} from "@inertiajs/vue3";
+import { getUsePage } from "@/composables/usePage.js";
 
 const headerStore = useHeaderStore();
-const page = usePage();
+const page = getUsePage();
 const userRole = null;
 
 const commonMenu = computed(() => {

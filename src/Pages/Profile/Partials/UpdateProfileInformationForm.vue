@@ -1,5 +1,6 @@
 <script setup>
-import {Link, useForm, usePage} from '@inertiajs/vue3';
+import {Link, useForm} from '@inertiajs/vue3';
+import { getUsePage } from "@/composables/usePage.js";
 
 defineProps({
     mustVerifyEmail: {
@@ -10,7 +11,8 @@ defineProps({
     },
 });
 
-const user = usePage().props.auth.user;
+const page = getUsePage();
+const user = page.props.auth.user;
 
 const form = useForm({
     name: user.name,

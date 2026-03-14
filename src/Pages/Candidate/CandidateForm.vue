@@ -1,6 +1,6 @@
 <script setup>
 import RichEditor from "@/components/RichEditor.vue";
-import {usePage} from "@inertiajs/vue3";
+import { getUsePage } from "@/composables/usePage.js";
 import {useCandidateStore} from "@/stores/candidate.js";
 import {onMounted} from "vue";
 import Multiselect from "vue-multiselect";
@@ -9,7 +9,7 @@ const props = defineProps({
     candidate: Object | null,
 });
 
-const page = usePage();
+const page = getUsePage();
 const store = useCandidateStore();
 
 const user = page.props.auth.user;

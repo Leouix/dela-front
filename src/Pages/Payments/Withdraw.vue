@@ -6,6 +6,8 @@ import {useBalanceStore} from "@/stores/balance.js";
 
 import {useUtilsStore} from "@/stores/utils.js";
 
+import axios from "axios";
+
 const wallet = ref(null)
 const withdrawTransactions = ref([])
 
@@ -17,10 +19,9 @@ const user = ref(null)
 const walletNumber = ref('')
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // wallet.value = response.data.wallet
-    // withdrawTransactions.value = response.data.withdrawTransactions
-    // user.value = response.data.user
+    const response = await axios.post('/api/withdraw')
+    wallet.value = response.data.wallet
+    withdrawTransactions.value = response.data.withdrawTransactions
 }
 
 onMounted(() => {

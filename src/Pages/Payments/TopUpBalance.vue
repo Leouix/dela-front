@@ -7,6 +7,8 @@ import {useWalletsStore} from "@/stores/wallets.js";
 import {useUtilsStore} from "@/stores/utils.js";
 import AddWalletModal from "@/components/AddWalletModal.vue";
 
+import axios from "axios";
+
 const store = usePaymentsStore();
 const walletStore = useWalletsStore();
 
@@ -23,14 +25,10 @@ const userRole = ref(null)
 const util = useUtilsStore();
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // systemWallet.value = response.data.systemWallet
-    // transactions.value = response.data.transactions
-    // amountPayment.value = response.data.amountPayment
-    // wallets.value = response.data.wallets
-    // is_admin.value = response.data.is_admin
-    // user.value = response.data.user
-    // userRole.value = user.value?.mode
+    const response = await axios.post('/api/top-up-balance')
+    systemWallet.value = response.data.systemWallet
+    transactions.value = response.data.transactions
+    wallets.value = response.data.wallets
 }
 
 onMounted(() => {

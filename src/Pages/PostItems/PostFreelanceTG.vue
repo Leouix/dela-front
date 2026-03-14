@@ -1,4 +1,5 @@
 <script setup> import AppLayout from "@/Layouts/AppLayout.vue";
+import { getUsePage } from "@/composables/usePage.js";
 import {useUtilsStore} from "@/stores/utils.js";
 import {useJobApplicationStore} from "@/stores/job_application.js";
 import {computed} from "vue";
@@ -11,7 +12,7 @@ const props = defineProps({
     isCurrentUserIsAuthor: Boolean | null,
 });
 
-const page = usePage();
+const page = getUsePage();
 const userRole = page.props.auth.user?.mode;
 
 const utilStore = useUtilsStore();

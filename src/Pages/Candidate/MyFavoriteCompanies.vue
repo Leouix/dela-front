@@ -4,13 +4,15 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import {useFavoriteStore} from "@/stores/favorites.js";
 
 
+import axios from "axios";
+
 const favoriteCompanies = ref([])
 
 const storeFavorite = useFavoriteStore();
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // favoriteCompanies.value = response.data
+    const response = await axios.post('/api/my/specialist/favorite-companies')
+    favoriteCompanies.value = response.data.favoriteCompanies
 }
 
 onMounted(() => {

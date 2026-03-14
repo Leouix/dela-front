@@ -1,10 +1,10 @@
 <script setup>
 import {ref, watch, nextTick, onUnmounted, onMounted} from 'vue';
 import { useSupportStore } from '@/stores/support.js';
-import { usePage } from '@inertiajs/vue3';
+import { getUsePage } from '@/composables/usePage.js';
 
 const store = useSupportStore();
-const page  = usePage();
+const page  = getUsePage();
 
 window.onVerify = token => (store.form.recaptchaToken = token);
 

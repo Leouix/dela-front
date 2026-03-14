@@ -5,6 +5,8 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
 import {useBalanceStore} from "@/stores/balance.js";
 
+import axios from "axios";
+
 const balanceReserved = ref([])
 const transactions = ref([])
 const balanceReservedAmount = ref(0)
@@ -16,11 +18,9 @@ const user = ref(null)
 const util = useUtilsStore();
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
-    // balanceReserved.value = response.data.balanceReserved
-    // transactions.value = response.data.transactions
-    // balanceReservedAmount.value = response.data.balanceReservedAmount
-    // user.value = response.data.user
+    const response = await axios.post('/api/balance')
+    balanceReserved.value = response.data.balanceReserved
+    balanceReservedAmount.value = response.data.balanceReservedAmount
 }
 
 onMounted(() => {

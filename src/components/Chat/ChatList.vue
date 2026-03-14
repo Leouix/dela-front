@@ -2,11 +2,11 @@
 import {useChatStore} from "@/stores/chatStore.js";
 import {computed, ref} from "vue";
 import ChatAvatar from "@/components/Chat/ChatAvatar.vue";
-import {usePage} from "@inertiajs/vue3";
+import {getUsePage} from "@/composables/usePage.js";
 
 const store = useChatStore();
 
-const page = usePage();
+const page = getUsePage();
 const userRole = page.props.auth?.user?.mode;
 
 store.userRole = userRole;
