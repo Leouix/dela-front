@@ -10,10 +10,11 @@ const utilsStore = useUtilsStore();
 const textLength = 350;
 
 async function fetchData() {
-    // TODO: axios.get('/api/home')
-    // items.value = response.data
   axios.post('/api/home').then(response => {
     console.log({response})
+    if (response?.data) {
+      items.value = response.data
+    }
   })
 }
 
