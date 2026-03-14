@@ -1,0 +1,1 @@
+import{_ as a,o,c as t,a as s}from"./index-BnJRj9ah.js";const c={},n={class:"add-catalog"};function r(d,e){return o(),t("div",n,[...e[0]||(e[0]=[s("h1",null,"Добавить в каталог",-1)])])}const _=a(c,[["render",r]]);export{_ as default};

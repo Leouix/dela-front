@@ -1,0 +1,1 @@
+import{_ as o,o as s,c as r,a as t}from"./index-BnJRj9ah.js";const c={},n={class:"profile"};function a(l,e){return s(),r("div",n,[...e[0]||(e[0]=[t("h1",null,"Профиль специалиста",-1)])])}const f=o(c,[["render",a]]);export{f as default};

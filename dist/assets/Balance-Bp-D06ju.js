@@ -1,0 +1,1 @@
+import{_ as a,o as s,c,a as n}from"./index-BnJRj9ah.js";const o={},t={class:"balance"};function r(l,e){return s(),c("div",t,[...e[0]||(e[0]=[n("h1",null,"Баланс",-1)])])}const d=a(o,[["render",r]]);export{d as default};

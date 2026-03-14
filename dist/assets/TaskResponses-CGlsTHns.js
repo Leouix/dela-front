@@ -1,0 +1,1 @@
+import{_ as e,o,c as t,a as n}from"./index-BnJRj9ah.js";const a={},r={class:"task-responses"};function c(_,s){return o(),t("div",r,[...s[0]||(s[0]=[n("h1",null,"Мои отклики на задачи",-1)])])}const d=e(a,[["render",c]]);export{d as default};

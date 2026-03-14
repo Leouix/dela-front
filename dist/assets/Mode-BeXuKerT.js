@@ -1,0 +1,1 @@
+import{_ as o,o as s,c as t,a as c}from"./index-BnJRj9ah.js";const n={},r={class:"mode"};function a(_,e){return s(),t("div",r,[...e[0]||(e[0]=[c("h1",null,"Выбор режима",-1)])])}const l=o(n,[["render",a]]);export{l as default};

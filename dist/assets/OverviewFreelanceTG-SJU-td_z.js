@@ -1,0 +1,1 @@
+import{_ as a,o as r,c as s,a as c,t}from"./index-BnJRj9ah.js";const o={},n={class:"overview-freelance-tg"};function l(e,_){return r(),s("div",n,[c("h1",null,"Freelance TG: "+t(e.$route.params.slug),1)])}const f=a(o,[["render",l]]);export{f as default};

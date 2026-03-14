@@ -1,0 +1,1 @@
+import{_ as s,o as t,c as r,a as o}from"./index-BnJRj9ah.js";const a={},c={class:"withdraw-requests"};function n(_,e){return t(),r("div",c,[...e[0]||(e[0]=[o("h1",null,"Запросы на вывод",-1)])])}const i=s(a,[["render",n]]);export{i as default};

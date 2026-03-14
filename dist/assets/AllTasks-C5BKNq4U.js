@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a,a as o}from"./index-BnJRj9ah.js";const c={},n={class:"all-tasks"};function r(l,s){return t(),a("div",n,[...s[0]||(s[0]=[o("h1",null,"Все задачи",-1)])])}const d=e(c,[["render",r]]);export{d as default};

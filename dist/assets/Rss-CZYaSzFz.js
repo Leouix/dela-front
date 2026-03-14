@@ -1,0 +1,1 @@
+import{_ as e,o,c as t,a as r}from"./index-BnJRj9ah.js";const c={},n={class:"rss"};function a(_,s){return o(),t("div",n,[...s[0]||(s[0]=[r("h1",null,"RSS",-1)])])}const d=e(c,[["render",a]]);export{d as default};

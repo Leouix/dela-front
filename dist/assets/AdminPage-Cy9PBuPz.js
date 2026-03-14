@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as n,a as o}from"./index-BnJRj9ah.js";const t={},c={class:"admin-page"};function r(_,e){return a(),n("div",c,[...e[0]||(e[0]=[o("h1",null,"Админ панель",-1)])])}const i=s(t,[["render",r]]);export{i as default};

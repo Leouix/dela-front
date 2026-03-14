@@ -1,0 +1,1 @@
+import{_ as s,o,c as t,a}from"./index-BnJRj9ah.js";const n={},r={class:"moderation-tasks"};function c(_,e){return o(),t("div",r,[...e[0]||(e[0]=[a("h1",null,"Модерация задач",-1)])])}const i=s(n,[["render",c]]);export{i as default};

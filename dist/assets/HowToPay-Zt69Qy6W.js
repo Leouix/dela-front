@@ -1,0 +1,1 @@
+import{_ as e,o as s,c as t,a}from"./index-BnJRj9ah.js";const c={},n={class:"how-to-pay"};function r(_,o){return s(),t("div",n,[...o[0]||(o[0]=[a("h1",null,"Как оплатить",-1)])])}const d=e(c,[["render",r]]);export{d as default};

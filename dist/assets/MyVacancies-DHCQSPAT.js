@@ -1,0 +1,1 @@
+import{_ as s,o as c,c as a,a as n}from"./index-BnJRj9ah.js";const o={},t={class:"my-vacancies"};function r(_,e){return c(),a("div",t,[...e[0]||(e[0]=[n("h1",null,"Мои вакансии",-1)])])}const l=s(o,[["render",r]]);export{l as default};

@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as o,a}from"./index-BnJRj9ah.js";const c={},n={class:"my-tasks"};function r(_,s){return t(),o("div",n,[...s[0]||(s[0]=[a("h1",null,"Мои задачи",-1)])])}const d=e(c,[["render",r]]);export{d as default};
