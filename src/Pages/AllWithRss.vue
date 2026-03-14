@@ -13,7 +13,7 @@ async function fetchData() {
   axios.post('/api/home').then(response => {
     console.log({response})
     if (response?.data) {
-      items.value = response.data
+      items.value = response.data?.items
     }
   })
 }
