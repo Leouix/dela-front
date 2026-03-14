@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
+import axios from "axios";
 
 
 const items = ref([])
@@ -9,8 +10,11 @@ const utilsStore = useUtilsStore();
 const textLength = 350;
 
 async function fetchData() {
-    // TODO: axios.get('/api/...')
+    // TODO: axios.get('/api/home')
     // items.value = response.data
+  axios.post('/api/home').then(response => {
+    console.log({response})
+  })
 }
 
 onMounted(() => {
