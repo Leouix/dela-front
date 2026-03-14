@@ -5,7 +5,7 @@ import {onMounted} from "vue";
 
 onMounted(() => {
 
-  axios.post('/bootstrap').then(response => {
+  axios.post('/api/bootstrap').then(response => {
     console.log({response: response.data});
   })
 })
