@@ -1,6 +1,10 @@
 <script setup>
 import AppLayout from "../Layouts/AppLayout.vue";
+import axios from "axios";
 
+axios.post('/bootstrap').then(response => {
+  console.log({response: response.data});
+})
 </script>
 
 <template>
