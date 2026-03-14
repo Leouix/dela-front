@@ -1,1 +1,0 @@
-import{_ as a,o as c,c as s,a as o,t as r}from"./index-BnJRj9ah.js";const t={},n={class:"overview-vacancy"};function _(e,i){return c(),s("div",n,[o("h1",null,"Обзор вакансии: "+r(e.$route.params.slug),1)])}const d=a(t,[["render",_]]);export{d as default};

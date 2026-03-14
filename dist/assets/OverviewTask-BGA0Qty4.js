@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as t,a as o,t as r}from"./index-BnJRj9ah.js";const c={},n={class:"overview-task"};function _(e,i){return a(),t("div",n,[o("h1",null,"Обзор задачи: "+r(e.$route.params.slug),1)])}const d=s(c,[["render",_]]);export{d as default};

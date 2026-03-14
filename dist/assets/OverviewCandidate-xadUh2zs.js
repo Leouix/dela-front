@@ -1,1 +1,0 @@
-import{_ as a,o as s,c as t,a as o,t as r}from"./index-BnJRj9ah.js";const c={},n={class:"overview-candidate"};function i(e,d){return s(),t("div",n,[o("h1",null,"Обзор кандидата: "+r(e.$route.params.slug),1)])}const l=a(c,[["render",i]]);export{l as default};

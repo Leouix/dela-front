@@ -1,1 +1,0 @@
-import{_ as s,o as t,c as o,a}from"./index-BnJRj9ah.js";const r={},c={class:"favorite-tasks"};function n(_,e){return t(),o("div",c,[...e[0]||(e[0]=[a("h1",null,"Избранные задачи",-1)])])}const i=s(r,[["render",n]]);export{i as default};

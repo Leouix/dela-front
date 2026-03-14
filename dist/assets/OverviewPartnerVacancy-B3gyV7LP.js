@@ -1,1 +1,0 @@
-import{_ as a,o as r,c,a as t,t as s}from"./index-BnJRj9ah.js";const n={},o={class:"overview-partner-vacancy"};function i(e,_){return r(),c("div",o,[t("h1",null,"Партнерская вакансия: "+s(e.$route.params.id),1)])}const d=a(n,[["render",i]]);export{d as default};

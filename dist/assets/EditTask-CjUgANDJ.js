@@ -1,1 +1,0 @@
-import{_ as s,o as t,c as a,a as o,t as c}from"./index-BnJRj9ah.js";const r={},n={class:"edit-task"};function _(e,i){return t(),a("div",n,[o("h1",null,"Редактирование задачи: "+c(e.$route.params.slug),1)])}const d=s(r,[["render",_]]);export{d as default};

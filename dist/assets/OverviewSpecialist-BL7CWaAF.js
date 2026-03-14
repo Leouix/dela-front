@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as t,a as c,t as o}from"./index-BnJRj9ah.js";const r={},i={class:"overview-specialist"};function n(e,l){return a(),t("div",i,[c("h1",null,"Обзор специалиста: "+o(e.$route.params.slug),1)])}const p=s(r,[["render",n]]);export{p as default};

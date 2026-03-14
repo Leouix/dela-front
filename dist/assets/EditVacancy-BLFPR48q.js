@@ -1,1 +1,0 @@
-import{_ as e,o as c,c as s,a as t,t as o}from"./index-BnJRj9ah.js";const n={},r={class:"edit-vacancy"};function _(a,i){return c(),s("div",r,[t("h1",null,"Редактирование вакансии: "+o(a.$route.params.slug),1)])}const d=e(n,[["render",_]]);export{d as default};

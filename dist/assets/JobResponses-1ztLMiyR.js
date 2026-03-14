@@ -1,1 +1,0 @@
-import{_ as s,o,c as n,a as t}from"./index-BnJRj9ah.js";const r={},c={class:"job-responses"};function a(_,e){return o(),n("div",c,[...e[0]||(e[0]=[t("h1",null,"Мои отклики на вакансии",-1)])])}const d=s(r,[["render",a]]);export{d as default};

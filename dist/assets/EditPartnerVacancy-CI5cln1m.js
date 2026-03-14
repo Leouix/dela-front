@@ -1,1 +1,0 @@
-import{_ as e,o as t,c,a as r,t as s}from"./index-BnJRj9ah.js";const n={},o={class:"edit-partner-vacancy"};function i(a,_){return t(),c("div",o,[r("h1",null,"Редактирование партнерской вакансии: "+s(a.$route.params.id),1)])}const l=e(n,[["render",i]]);export{l as default};

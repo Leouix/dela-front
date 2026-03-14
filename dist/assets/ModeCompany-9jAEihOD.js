@@ -1,1 +1,0 @@
-import{_ as o,o as s,c as n,a as t}from"./index-BnJRj9ah.js";const a={},c={class:"mode-company"};function r(_,e){return s(),n("div",c,[...e[0]||(e[0]=[t("h1",null,"Режим компании",-1)])])}const l=o(a,[["render",r]]);export{l as default};

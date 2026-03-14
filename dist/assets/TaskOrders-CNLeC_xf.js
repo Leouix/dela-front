@@ -1,1 +1,0 @@
-import{_ as e,o as r,c as o,a as t}from"./index-BnJRj9ah.js";const a={},c={class:"task-orders"};function n(d,s){return r(),o("div",c,[...s[0]||(s[0]=[t("h1",null,"Task Orders",-1)])])}const l=e(a,[["render",n]]);export{l as default};

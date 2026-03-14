@@ -1,1 +1,0 @@
-import{_ as s,o as t,c as o,a}from"./index-BnJRj9ah.js";const n={},c={class:"new-task"};function r(_,e){return t(),o("div",c,[...e[0]||(e[0]=[a("h1",null,"Новая задача",-1)])])}const d=s(n,[["render",r]]);export{d as default};

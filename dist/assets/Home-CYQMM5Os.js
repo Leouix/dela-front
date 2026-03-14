@@ -1,1 +1,0 @@
-import{_ as s,o as t,c as n,a as o}from"./index-BnJRj9ah.js";const a={},c={class:"home"};function r(l,e){return t(),n("div",c,[...e[0]||(e[0]=[o("h1",null,"Главная страница",-1),o("p",null,"Добро пожаловать на Dela",-1)])])}const d=s(a,[["render",r]]);export{d as default};

@@ -1,1 +1,0 @@
-import{_ as o,o as t,c as a,a as s}from"./index-BnJRj9ah.js";const n={},c={class:"mode-candidate"};function d(r,e){return t(),a("div",c,[...e[0]||(e[0]=[s("h1",null,"Режим соискателя",-1)])])}const i=o(n,[["render",d]]);export{i as default};

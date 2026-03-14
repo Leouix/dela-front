@@ -1,1 +1,0 @@
-import{_ as a,o as n,c,a as r}from"./index-BnJRj9ah.js";const t={},s={class:"new-partner-vacancy"};function o(_,e){return n(),c("div",s,[...e[0]||(e[0]=[r("h1",null,"Новая партнерская вакансия",-1)])])}const d=a(t,[["render",o]]);export{d as default};

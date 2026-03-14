@@ -1,1 +1,0 @@
-import{_ as s,o as r,c as a,a as t,t as o}from"./index-BnJRj9ah.js";const c={},n={class:"task-order"};function _(e,d){return r(),a("div",n,[t("h1",null,"Task Order: "+o(e.$route.params.slug),1)])}const i=s(c,[["render",_]]);export{i as default};

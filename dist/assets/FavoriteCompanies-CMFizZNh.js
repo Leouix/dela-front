@@ -1,1 +1,0 @@
-import{_ as o,o as s,c as t,a}from"./index-BnJRj9ah.js";const n={},r={class:"favorite-companies"};function c(i,e){return s(),t("div",r,[...e[0]||(e[0]=[a("h1",null,"Избранные компании",-1)])])}const f=o(n,[["render",c]]);export{f as default};

@@ -1,1 +1,0 @@
-import{_ as o,o as a,c as s,a as c}from"./index-BnJRj9ah.js";const n={},t={class:"moderation-vacancies"};function r(i,e){return a(),s("div",t,[...e[0]||(e[0]=[c("h1",null,"Модерация вакансий",-1)])])}const d=o(n,[["render",r]]);export{d as default};

@@ -1,1 +1,0 @@
-import{_ as t,o as a,c as s,a as o}from"./index-BnJRj9ah.js";const n={},r={class:"favorite-candidates"};function c(d,e){return a(),s("div",r,[...e[0]||(e[0]=[o("h1",null,"Избранные кандидаты",-1)])])}const _=t(n,[["render",c]]);export{_ as default};

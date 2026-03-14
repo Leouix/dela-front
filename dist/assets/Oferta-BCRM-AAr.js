@@ -1,1 +1,0 @@
-import{_ as t,o,c as s,a as r}from"./index-BnJRj9ah.js";const a={},c={class:"oferta"};function n(_,e){return o(),s("div",c,[...e[0]||(e[0]=[r("h1",null,"Оферта",-1)])])}const l=t(a,[["render",n]]);export{l as default};

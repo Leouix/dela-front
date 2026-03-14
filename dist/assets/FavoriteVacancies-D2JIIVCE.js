@@ -1,1 +1,0 @@
-import{_ as a,o as s,c,a as o}from"./index-BnJRj9ah.js";const t={},n={class:"favorite-vacancies"};function r(i,e){return s(),c("div",n,[...e[0]||(e[0]=[o("h1",null,"Избранные вакансии",-1)])])}const f=a(t,[["render",r]]);export{f as default};
