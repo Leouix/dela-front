@@ -1,19 +1,26 @@
 <script setup>
+import { ref, computed, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { useUtilsStore } from "@/stores/utils.js";
-import { computed } from "vue";
-import {Head} from "@inertiajs/vue3";
 
-const props = defineProps({
-    tasks: Object | null,
-});
+
+const tasks = ref(null)
 
 const utilsStore = useUtilsStore();
 
-const items = computed(() => {
-    if (!props.tasks) return [];
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // tasks.value = response.data
+}
 
-    return props.tasks.map(item => ({
+onMounted(() => {
+    fetchData()
+})
+
+const items = computed(() => {
+    if (!tasks.value) return [];
+
+    return tasks.value.map(item => ({
         id: item.id,
         title: item.title,
         text: item.text,
@@ -35,7 +42,7 @@ function getItemUrl(item) {
 
 <template>
 
-    <Head title="Мои задачи" />
+    
 
     <AppLayout>
         <div class="overview">

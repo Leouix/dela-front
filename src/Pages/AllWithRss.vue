@@ -1,11 +1,21 @@
-<script setup> import AppLayout from "@/Layouts/AppLayout.vue";
+<script setup>
+import { ref, onMounted } from 'vue'
+import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
-import {computed} from "vue";
-import {Head} from "@inertiajs/vue3";
 
-const props = defineProps({items: Array})
+
+const items = ref([])
 const utilsStore = useUtilsStore();
 const textLength = 350;
+
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // items.value = response.data
+}
+
+onMounted(() => {
+    fetchData()
+})
 
 function previewText(text) {
     if (text && text?.length > 1) {
@@ -61,7 +71,7 @@ function getCompanyName(item) {
 
 </script>
 <template>
-    <Head title="Удаленная работа" />
+    
 
     <AppLayout>
 

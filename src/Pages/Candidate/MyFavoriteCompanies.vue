@@ -1,18 +1,21 @@
 <script setup>
-
+import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {onMounted} from "vue";
 import {useFavoriteStore} from "@/stores/favorites.js";
-import {Head} from "@inertiajs/vue3";
 
-const props = defineProps({
-    favoriteCompanies: Object,
-});
+
+const favoriteCompanies = ref([])
 
 const storeFavorite = useFavoriteStore();
 
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // favoriteCompanies.value = response.data
+}
+
 onMounted(() => {
-    storeFavorite.favoriteCompanies = props.favoriteCompanies.map(company => {
+    fetchData()
+    storeFavorite.favoriteCompanies = favoriteCompanies.value.map(company => {
         company.isFavorite = true;
         return company;
     });
@@ -23,7 +26,7 @@ onMounted(() => {
 
 <template>
 
-    <Head title="Избранные компании" />
+    
     <AppLayout>
 
         <div v-for="company in storeFavorite?.favoriteCompanies" class="overview-company favorite-companies">

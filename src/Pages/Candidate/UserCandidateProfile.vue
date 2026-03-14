@@ -2,39 +2,45 @@
 import {useCandidateStore} from "@/stores/candidate.js";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {onMounted, ref} from "vue";
-import {Head, Link} from "@inertiajs/vue3";
+
 import ResponsiveNavLink from "@/components/ResponsiveNavLink.vue";
 import CandidateForm from "@/Pages/Candidate/CandidateForm.vue";
 
 const store = useCandidateStore();
 
-const props = defineProps([
-    'candidate',
-    'notes',
-    'specialistStatistic',
-]);
+const candidate = ref(null)
+const notes = ref(null)
+const specialistStatistic = ref({ data: {} })
 
-store.candidate = props.candidate;
-store.notes = props.notes;
-
-store.candidate.form_job = props.candidate.form_job ?? '';
-store.candidate.gender = props.candidate.gender ?? '';
-
-const aboutTextarea = ref(null);
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // candidate.value = response.data.candidate
+    // notes.value = response.data.notes
+    // specialistStatistic.value = response.data.specialistStatistic
+}
 
 onMounted(() => {
+    fetchData()
     if (aboutTextarea.value) {
         aboutTextarea.value.style.height = 'auto'
         aboutTextarea.value.style.height = aboutTextarea.value.scrollHeight + 'px'
     }
-});
+})
+
+store.candidate = candidate.value ?? {};
+store.notes = notes.value ?? [];
+
+store.candidate.form_job = candidate.value?.form_job ?? '';
+store.candidate.gender = candidate.value?.gender ?? '';
+
+const aboutTextarea = ref(null);
 
 
 </script>
 
 <template>
 
-    <Head title="Мой профиль" />
+    
 
     <AppLayout>
 

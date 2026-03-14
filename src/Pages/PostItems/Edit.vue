@@ -3,7 +3,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import {onMounted, ref} from "vue";
 import {useEditPostItemStore} from "@/stores/editPostItem.js";
 import RichEditor from "@/components/RichEditor.vue";
-import {Head} from "@inertiajs/vue3";
+
 
 const props = defineProps({
     userRole: String|null,
@@ -27,7 +27,7 @@ onMounted(() => {
 
 
 <template>
-    <Head title="Редактировать вакансию" />
+    
     <AppLayout>
 
         <div v-show="!props.isCompanyFilled" class="note-fill-about-company">

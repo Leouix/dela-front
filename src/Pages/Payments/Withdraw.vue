@@ -1,26 +1,33 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useWalletsStore} from "@/stores/wallets.js";
 import {useBalanceStore} from "@/stores/balance.js";
-import {Head, usePage} from "@inertiajs/vue3";
-import {ref} from "vue";
+
 import {useUtilsStore} from "@/stores/utils.js";
 
-const props = defineProps({
-    wallet: Object | null,
-    withdrawTransactions: Object,
-});
+const wallet = ref(null)
+const withdrawTransactions = ref([])
 
 const store = useWalletsStore();
 const balanceStore = useBalanceStore();
 const utils = useUtilsStore();
 
-const page = usePage();
+const user = ref(null)
+const walletNumber = ref('')
 
-const user = page.props.auth?.user;
-const walletNumber = props.wallet?.number;
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // wallet.value = response.data.wallet
+    // withdrawTransactions.value = response.data.withdrawTransactions
+    // user.value = response.data.user
+}
 
-balanceStore.availableBalance = user.availableBalance;
+onMounted(() => {
+    fetchData()
+    walletNumber.value = wallet.value?.number ?? ''
+    balanceStore.availableBalance = user.value?.availableBalance ?? 0;
+})
 
 const maxAmount = ref(0);
 
@@ -31,7 +38,7 @@ function setMax() {
 </script>
 
 <template>
-    <Head title="Запрос на вывод" />
+    
     <AppLayout>
         <h1>Вывод средств</h1>
 
@@ -53,7 +60,7 @@ function setMax() {
         </div>
 
         <div class="available-balance-area">
-            <p class="balance-plus">Доступно: {{user.availableBalance}}</p>
+            <p class="balance-plus">Доступно: {{user?.availableBalance}}</p>
             <div class="withdraw-area">
                 <form @submit.prevent="balanceStore.withdrawRequest">
                     <input type="number" step="any" v-model="maxAmount" min="0" name="amount">
@@ -83,7 +90,7 @@ function setMax() {
                 </thead>
 
                 <tr
-                    v-for="withdrawTransaction in props.withdrawTransactions"
+                    v-for="withdrawTransaction in withdrawTransactions"
                     :key="withdrawTransaction.id"
                 >
                     <td class="date-column">

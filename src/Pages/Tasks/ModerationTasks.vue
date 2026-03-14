@@ -3,7 +3,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
 import {useTasksStore} from "@/stores/tasks.js";
-import {Head} from "@inertiajs/vue3";
+
 
 const props = defineProps({
     items: Object,
@@ -14,7 +14,7 @@ const store = useTasksStore();
 </script>
 
 <template>
-    <Head title="Модерация задач" />
+    
     <AppLayout>
         <div class="overview">
             <h1 class="overview__title">Модерация</h1>

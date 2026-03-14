@@ -1,15 +1,22 @@
 <script setup>
+import { ref, computed, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { useUtilsStore } from "@/stores/utils.js";
-import { computed } from "vue";
-import {Head} from "@inertiajs/vue3";
 
-const props = defineProps({
-    items: Array
-});
+
+const items = ref([])
 
 const utilsStore = useUtilsStore();
 const textLength = 350;
+
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // items.value = response.data
+}
+
+onMounted(() => {
+    fetchData()
+})
 
 function previewText(text) {
     return text.length > textLength
@@ -18,7 +25,7 @@ function previewText(text) {
 }
 
 const mappedItems = computed(() =>
-    props.items.map(item => ({
+    items.value.map(item => ({
         ...item,
         type: item?.type === 'vacancy'
             ? 'Вакансия'
@@ -35,7 +42,7 @@ function getItemUrl(item) {
 </script>
 
 <template>
-    <Head title="Все вакансии" />
+    
     <AppLayout>
         <div class="overview">
             <h1 class="overview__title">Все вакансии</h1>

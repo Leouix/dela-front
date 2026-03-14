@@ -2,7 +2,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
 import {usePaymentsStore} from "@/stores/payments.js";
-import {Head} from "@inertiajs/vue3";
+
 
 const props = defineProps({
     withdrawRequests: Object,
@@ -25,7 +25,7 @@ const getLabelStatus = (externalTransactionStatus) => {
 </script>
 
 <template>
-    <Head title="Админ запросы на вывод" />
+    
     <AppLayout>
 
         ID/ Дата создания/ Юзер/ Сумма/ Номер кошелька/ Статус/ TxId/ Комментарий

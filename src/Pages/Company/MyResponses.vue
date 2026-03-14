@@ -1,13 +1,20 @@
 <script setup>
-
+import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
 
-const props = defineProps({
-    'postItems': Object|null,
-})
+const postItems = ref(null)
 
 const utilsStore = useUtilsStore();
+
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // postItems.value = response.data
+}
+
+onMounted(() => {
+    fetchData()
+})
 
 </script>
 
@@ -15,7 +22,7 @@ const utilsStore = useUtilsStore();
     <AppLayout>
 
         <h1>Мои отклики</h1>
-        <div v-for="item in props.postItems" :key="item?.id" class="item post-card">
+        <div v-for="item in (postItems ?? [])" :key="item?.id" class="item post-card">
             <div class="company">
                 <h2 class="post-card__title">Название вакансии: <a :href="`/overview/vacancy/` + item.id">{{ item.title }}</a></h2>
 

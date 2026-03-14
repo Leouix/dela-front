@@ -1,44 +1,55 @@
 <script setup>
+import { ref, computed, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
 import {useTaskApplicationStore} from "@/stores/task_application.js";
-import {computed} from "vue";
-import {Head, usePage} from "@inertiajs/vue3";
+
 import {useCandidateStore} from "@/stores/candidate.js";
 import {useDragNDropStore} from "@/stores/drag-n-drop.js";
 import TaskApplications from "@/components/TaskApplications.vue";
 import {useTasksStore} from "@/stores/tasks.js";
 import ShowTaskDocuments from "@/components/ShowTaskDocuments.vue";
 
-const props = defineProps({
-    task: Object | null,
-    wasApplied: Boolean | null,
-    isFavoriteTask: Boolean | null,
-    taskApplications: Object | null,
-    isCurrentUserIsAuthor: Boolean,
-    currentCandidateBanned: Boolean | null,
-});
+const task = ref(null)
+const wasApplied = ref(false)
+const isFavoriteTask = ref(false)
+const taskApplications = ref(null)
+const isCurrentUserIsAuthor = ref(false)
+const currentCandidateBanned = ref(false)
 
-const page = usePage();
-const userRole = page.props.auth.user?.mode;
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // task.value = response.data.task
+    // wasApplied.value = response.data.wasApplied
+    // isFavoriteTask.value = response.data.isFavoriteTask
+    // taskApplications.value = response.data.taskApplications
+    // isCurrentUserIsAuthor.value = response.data.isCurrentUserIsAuthor
+    // currentCandidateBanned.value = response.data.currentCandidateBanned
+}
+
+onMounted(() => {
+    fetchData()
+})
+
+const userRole = ref(null)
 
 const utilStore = useUtilsStore();
 const taskApplicationStore = useTaskApplicationStore();
 
-const applyButtonDisabled = computed(() => taskApplicationStore.applyButtonDisabled ?? props.wasApplied);
+const applyButtonDisabled = computed(() => taskApplicationStore.applyButtonDisabled ?? wasApplied.value);
 
 const store = useCandidateStore();
 
-store.isFavoriteVacancy = props.isFavoriteVacancy;
+store.isFavoriteVacancy = ref(false);
 
 const dragNDropStore = useDragNDropStore();
 
-dragNDropStore.items = props.taskApplications.data;
+dragNDropStore.items = taskApplications.value?.data ?? [];
 
-const canEdit = props.isCurrentUserIsAuthor && !props.taskApplications?.data.length > 0 && userRole === 'company';
-const canApply = userRole === 'candidate' && !props.isCurrentUserIsAuthor && !props.currentCandidateBanned;
+const canEdit = isCurrentUserIsAuthor.value && !taskApplications.value?.data?.length > 0 && userRole.value === 'company';
+const canApply = userRole.value === 'candidate' && !isCurrentUserIsAuthor.value && !currentCandidateBanned.value;
 const taskStore = useTasksStore();
-taskStore.isFavoriteTask = props.isFavoriteTask;
+taskStore.isFavoriteTask = isFavoriteTask.value;
 
 const statuses = {
     publish: 'Опубликовано',
@@ -46,12 +57,12 @@ const statuses = {
     archive: 'Архив',
 };
 
-const status = statuses[props.task.post_status] ?? 'Неизвестный статус';
+const status = computed(() => statuses[task.value?.post_status] ?? 'Неизвестный статус');
 </script>
 
 <template>
 
-    <Head title="Задача" />
+    
     <AppLayout>
 
         <a v-if="canEdit" :href="`/my/company/edit-task/` + task.slug" target="_blank" rel="noopener noreferrer" class="editable">

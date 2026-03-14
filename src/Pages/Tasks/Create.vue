@@ -5,7 +5,7 @@ import RichEditor from "@/components/RichEditor.vue";
 import {useCreateTaskStore} from "@/stores/createTask.js";
 import Multiselect from "vue-multiselect";
 import TaskDocuments from "@/components/TaskDocuments.vue";
-import {Head} from "@inertiajs/vue3";
+
 
 const props = defineProps({
     isCompanyFilled: Boolean,
@@ -87,7 +87,7 @@ function togglePersonalEmails() {
 </script>
 
 <template>
-    <Head title="Создать задачу" />
+    
     <AppLayout>
 
         <div class="create-form-container">

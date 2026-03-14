@@ -3,7 +3,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
 import {useJobApplicationStore} from "@/stores/job_application.js";
 import {computed} from "vue";
-import {Head, usePage} from "@inertiajs/vue3";
+
 import {useCandidateStore} from "@/stores/candidate.js";
 
 import JobApplications from "@/components/JobApplications.vue";
@@ -45,7 +45,7 @@ const status = statuses[props.postItem.post_status] ?? 'Неизвестный �
 </script>
 
 <template>
-    <Head title="Вакансия" />
+    
     <AppLayout>
 
         <div class="post-title-area">

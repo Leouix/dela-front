@@ -3,7 +3,6 @@ import InputError from '@/components/InputError.vue';
 import InputLabel from '@/components/InputLabel.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import TextInput from '@/components/TextInput.vue';
-import { Head, useForm } from '@inertiajs/vue3';
 import {onMounted, ref} from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 
@@ -31,7 +30,7 @@ onMounted(() => {
 <template>
     <AppLayout>
         <div class="forgot-password-area">
-            <Head title="Forgot Password" />
+            
 
             <div class="mb-4 text-sm text-gray-600 notice-text">
                 Забыли пароль? Нет проблем. Просто сообщите нам свой адрес электронной почты,

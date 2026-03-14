@@ -33,7 +33,7 @@ import AppLayout from "../Layouts/AppLayout.vue";
                     <li>Перед публикацией все задачи проходят <strong>обязательную модерацию</strong>;</li>
                     <li> Переключайтесь между режимами Мастер\Заказчик, чтобы <a class="section-green-link" href="/my/company/new-task">Создать</a> или
                         <a class="section-green-link" href="/">Откликнуться</a> на&nbsp;задачу;</li>
-                    <li><a class="section-link" href="/login">Зарегистрируйтесь</a>, чтобы воспользоваться всеми возможностями сервиса;</li>
+                    <li><a class="section-link" href="/register">Зарегистрируйтесь</a>, чтобы воспользоваться всеми возможностями сервиса;</li>
                 </ul>
 
             </section>

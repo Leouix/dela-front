@@ -1,11 +1,11 @@
 <script setup>
 
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {Head} from "@inertiajs/vue3";
+
 </script>
 
 <template>
-    <Head title="Админ Page" />
+    
     <AppLayout>
         <div class="admin-links">
             <a href="/moderation-vacancies" class="admin-link">

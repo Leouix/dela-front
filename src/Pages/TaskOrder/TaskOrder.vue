@@ -1,34 +1,44 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {ref} from "vue";
 import {useTaskOrderStore} from "@/stores/taskOrder.js";
 import RichEditor from "@/components/RichEditor.vue";
 import {useChatStore} from "@/stores/chatStore.js";
-import {Head, usePage} from "@inertiajs/vue3";
 
-const props = defineProps({
-    taskOrder: Object,
-    orderStatusActionTypes: Object,
-    deadlineStatistics: Object,
-});
+
+const taskOrder = ref({ data: {} })
+const orderStatusActionTypes = ref([])
+const deadlineStatistics = ref([])
 
 const store = useTaskOrderStore();
 
-const page = usePage();
+const user = ref(null)
+const chats = ref([])
+const userRole = ref(null)
 
-function getChatApplication() {
-    return page.props.chats.find((chat) => chat.chat_id === props.taskOrder?.data?.item.taskApplication.chat.chat_id)
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // taskOrder.value = response.data.taskOrder
+    // orderStatusActionTypes.value = response.data.orderStatusActionTypes
+    // deadlineStatistics.value = response.data.deadlineStatistics
+    // user.value = response.data.user
+    // chats.value = response.data.chats
 }
 
-const userRole = page.props.auth.user?.mode;
+onMounted(() => {
+    fetchData()
+    store.item = taskOrder.value?.data?.item ?? {};
+    store.item.deadline = taskOrder.value?.data?.item?.deadline ?? taskOrder.value?.data?.item?.taskApplication?.task?.deadline;
+    store.orderStatusActionTypes = orderStatusActionTypes.value
+    store.deadlineStatistics = deadlineStatistics.value;
+    userRole.value = user.value?.mode
+})
 
-store.item = props.taskOrder?.data?.item ?? {};
+function getChatApplication() {
+    return chats.value.find((chat) => chat.chat_id === store.item?.taskApplication?.chat?.chat_id)
+}
 
-store.item.deadline =  props.taskOrder?.data?.item?.deadline ?? props.taskOrder?.data?.item.taskApplication.task.deadline;
-store.orderStatusActionTypes = props.taskOrder.data.orderStatusActionTypes
-store.deadlineStatistics = props.taskOrder.data.deadlineStatistics;
-
-const item = store.item;
+const item = ref({});
 
 const newDateDeadline = ref(' __.__.__ ');
 const daysToAdd = ref(0);
@@ -42,29 +52,27 @@ function calculateDeadline(e) {
     const days = Number(e.target.value);
     daysToAdd.value = days;
 
-    if (!item.deadline) return;
+    if (!item.value.deadline) return;
 
-    // 🧩 Разбираем строку "2025-10-30 20:16:18" в дату
-    const stringDateOnly = item.deadline.split(' ')[0];
+    const stringDateOnly = item.value.deadline.split(' ')[0];
     const [year, month, day] = stringDateOnly.split('-').map(Number);
-    const baseDate = new Date(year, month - 1, day); // month - 1, потому что месяцы в JS начинаются с 0
+    const baseDate = new Date(year, month - 1, day);
 
     if (isNaN(baseDate)) {
-        console.error('Некорректная дата:', item.deadline);
+        console.error('Некорректная дата:', item.value.deadline);
         return;
     }
 
-    // ➕ Прибавляем дни
     baseDate.setDate(baseDate.getDate() + days);
 
-    // 🗓 Форматируем в читаемый вид
     newDateDeadline.value = baseDate.toLocaleDateString('ru-RU', formattedOptions);
 }
 
 const deadlineFormatted = (stringDate) => {
+    if (!stringDate) return '';
     const stringDateOnly = stringDate.split(' ')[0];
     const [year, month, day] = stringDateOnly.split('-').map(Number);
-    const baseDate = new Date(year, month - 1, day); // month - 1, потому что месяцы в JS начинаются с 0
+    const baseDate = new Date(year, month - 1, day);
     return baseDate.toLocaleDateString('ru-RU', formattedOptions);
 }
 
@@ -82,18 +90,18 @@ const openChat = () => {
 
 <template>
 
-    <Head title="Выполнение задачи" />
+    
 
     <AppLayout>
         <div>
 
-            <a :href="`/overview/task/`+item.taskApplication.task.slug" target="_blank" rel="noopener noreferrer" class="title-link"><h1>{{ item.taskApplication.task.title }}</h1></a>
+            <a :href="`/overview/task/`+item.taskApplication?.task?.slug" target="_blank" rel="noopener noreferrer" class="title-link"><h1>{{ item.taskApplication?.task?.title }}</h1></a>
 
             <p>Мастер по задаче:
-               <span class="p-value link-span"> <a :href="`/overview/specialist/`+ item.taskApplication.userCandidate.slug" target="_blank" rel="noopener noreferrer">{{ item.taskApplication.userCandidate.name}}</a></span>
+               <span class="p-value link-span"> <a :href="`/overview/specialist/`+ item.taskApplication?.userCandidate?.slug" target="_blank" rel="noopener noreferrer">{{ item.taskApplication?.userCandidate?.name}}</a></span>
             </p>
 
-            <p>Стоимость задачи: <span class="p-value">{{ item.taskApplication.task.cost}} USDT</span></p>
+            <p>Стоимость задачи: <span class="p-value">{{ item.taskApplication?.task?.cost}} USDT</span></p>
 
             <p>Deadline: <span class="p-value">{{ deadlineFormatted(store.item.deadline)}}</span> </p>
 

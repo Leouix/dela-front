@@ -2,7 +2,7 @@
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {Head} from "@inertiajs/vue3";
+
 
 defineProps({
     mustVerifyEmail: {
@@ -15,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Мой Профиль" />
+    
     <AppLayout>
         <div class="py-12 edit-profile-page">
             <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">

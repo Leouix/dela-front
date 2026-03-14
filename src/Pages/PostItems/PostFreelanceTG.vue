@@ -2,7 +2,7 @@
 import {useUtilsStore} from "@/stores/utils.js";
 import {useJobApplicationStore} from "@/stores/job_application.js";
 import {computed} from "vue";
-import {Head, usePage} from "@inertiajs/vue3";
+
 import {useCandidateStore} from "@/stores/candidate.js";
 
 const props = defineProps({
@@ -31,7 +31,7 @@ const toggleItem = () => {
 </script>
 
 <template>
-    <Head title="Фриланс задача" />
+    
     <AppLayout>
         <div class="post-card-tg">
             <div class="post-title-area">

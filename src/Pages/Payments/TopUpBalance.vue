@@ -1,30 +1,45 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {usePaymentsStore} from "@/stores/payments.js";
 import {useWalletsStore} from "@/stores/wallets.js";
-import {Head, usePage} from "@inertiajs/vue3";
-import {computed, ref} from "vue";
+
 import {useUtilsStore} from "@/stores/utils.js";
 import AddWalletModal from "@/components/AddWalletModal.vue";
 
 const store = usePaymentsStore();
 const walletStore = useWalletsStore();
 
-const page = usePage();
+const systemWallet = ref('')
+const transactions = ref(null)
+const amountPayment = ref(null)
+const wallets = ref(null)
 
-const props = defineProps({
-    systemWallet: String,
-    transactions: Object | null,
-    amountPayment: Object | null,
-    wallets: Object | null,
-});
+const is_admin = ref(false)
 
-store.systemWallet = props.systemWallet
-store.transactions = props.transactions
+const user = ref(null)
+const userRole = ref(null)
 
 const util = useUtilsStore();
 
-store.setUserRole(page.props.auth.user.mode)
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // systemWallet.value = response.data.systemWallet
+    // transactions.value = response.data.transactions
+    // amountPayment.value = response.data.amountPayment
+    // wallets.value = response.data.wallets
+    // is_admin.value = response.data.is_admin
+    // user.value = response.data.user
+    // userRole.value = user.value?.mode
+}
+
+onMounted(() => {
+    fetchData()
+    store.systemWallet = systemWallet.value
+    store.transactions = transactions.value
+    store.setUserRole(userRole.value)
+})
+
 const copyButton = ref();
 const copyButtonMobile = ref();
 
@@ -33,18 +48,13 @@ async function copySystemWallet() {
 
     try {
         await navigator.clipboard.writeText(textToCopy);
-        copyButton.value.classList.add("active")
-        copyButtonMobile.value.classList.add("active")
-        setTimeout(() => copyButton.value.classList.remove("active"), 1500);
+        copyButton.value?.classList.add("active")
+        copyButtonMobile.value?.classList.add("active")
+        setTimeout(() => copyButton.value?.classList.remove("active"), 1500);
     } catch (err) {
         console.error('Не удалось скопировать текст: ', err);
     }
 }
-
-const channel = window.Echo.private(`entry.transaction.channel.${page.props.auth.user.id}`);
-channel.listen('UpdateEntryTransactionEvent', (e) => {
-    store.addTransaction(e.transaction)
-});
 
 const statusClass = (transaction) => {
 
@@ -65,13 +75,13 @@ const statusClass = (transaction) => {
 </script>
 
 <template>
-    <Head title="Пополнение баланса" />
+    
     <AppLayout>
         <h1>Пополнение баланса</h1>
 
         <a class="payment-instructions" href="/how-to-pay">Инструкция "Как пополнить баланс с Bybit"</a>
 
-        <div v-if="page.props.is_admin" class="wallet-section system-wallet">
+        <div v-if="is_admin" class="wallet-section system-wallet">
 
             <h2>Номер кошелька системы</h2>
 
@@ -95,7 +105,7 @@ const statusClass = (transaction) => {
 
 
         <div class="wallets" v-if="false">
-            <div v-for="wallet in props.wallets" :key="wallet.id" class="wallet">
+            <div v-for="wallet in wallets" :key="wallet.id" class="wallet">
                 <div class="wallet-remove-icon"></div>
                 <div class="wallet-number">{{ wallet.number }}</div>
                 <div class="wallet-current-icon"></div>
@@ -140,9 +150,9 @@ const statusClass = (transaction) => {
                         ⚠️ Минимальная сумма пополнения — стоимость вашей задачи - 2$ + 5% от стоимости задачи.
                     </div>
 
-                    <div v-if="props.amountPayment"
+                    <div v-if="amountPayment"
                          class="text-system-wallet-notice-bottom-payment  payment-address-area__content_item">
-                        Рекомендуемая сумма оплаты: {{ props.amountPayment }} USDT
+                        Рекомендуемая сумма оплаты: {{ amountPayment }} USDT
                     </div>
                 </div>
 
@@ -200,7 +210,7 @@ const statusClass = (transaction) => {
                 </thead>
 
                 <tr
-                    v-for="(transaction, index) in store.transactions"
+                    v-for="(transaction, index) in (store.transactions ?? [])"
                     :key="transaction.id"
                     :class="{ 'even-row': index % 2 === 0, 'odd-row': index % 2 !== 0 }"
                 >

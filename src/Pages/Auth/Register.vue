@@ -3,7 +3,7 @@ import InputError from '@/components/InputError.vue';
 import InputLabel from '@/components/InputLabel.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import TextInput from '@/components/TextInput.vue';
-import {Head, Link, useForm} from '@inertiajs/vue3';
+
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {ref} from "vue";
 
@@ -45,7 +45,7 @@ const loginWithGithub = () => {
 </script>
 
 <template>
-    <Head title="Регистрация" />
+    
     <AppLayout>
 
         <div class="social-auth-block">

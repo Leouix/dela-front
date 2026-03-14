@@ -1,7 +1,7 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
-import {Head} from "@inertiajs/vue3";
+
 
 const props = defineProps({
     items: Array
@@ -28,7 +28,7 @@ function getItemUrl(item) {
 
 <template>
 
-    <Head title="Все задачи" />
+    
     <AppLayout>
         <div class="overview">
             <h1 class="overview__title">Все задачи</h1>

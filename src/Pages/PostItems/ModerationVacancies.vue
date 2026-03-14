@@ -3,7 +3,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
 import {usePostItemsStore} from "@/stores/post-items.js";
-import {Head} from "@inertiajs/vue3";
+
 
 const props = defineProps({
     items: Object,
@@ -14,7 +14,7 @@ const store = usePostItemsStore();
 </script>
 
 <template>
-    <Head title="Модерация вакансий" />
+    
     <AppLayout>
         <div class="overview">
             <h1 class="overview__title">Модерация</h1>

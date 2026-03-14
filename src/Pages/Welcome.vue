@@ -1,5 +1,4 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
 
 
 // import { useEcho } from "@laravel/echo-vue";
@@ -39,7 +38,7 @@ function handleImageError() {
 </script>
 
 <template>
-    <Head title="Welcome" />
+    
     <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
         <img
             id="background"

@@ -1,14 +1,21 @@
 <script setup>
-
+import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useUtilsStore} from "@/stores/utils.js";
-import {Head} from "@inertiajs/vue3";
 
-const props = defineProps({
-    postItems: Object|null,
-});
+
+const postItems = ref(null)
 
 const utilsStore = useUtilsStore();
+
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // postItems.value = response.data
+}
+
+onMounted(() => {
+    fetchData()
+})
 
 function dtoItem(item) {
     return {
@@ -24,14 +31,14 @@ function dtoItem(item) {
 }
 
 function mappedItems(items) {
-    return items.map(item => dtoItem(item))
+    return (items ?? []).map(item => dtoItem(item))
 }
 
 </script>
 
 
 <template>
-    <Head title="Мои вакансии" />
+    
     <AppLayout>
         <div class="overview">
             <h1 class="overview__title">Мои вакансии</h1>

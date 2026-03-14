@@ -4,220 +4,220 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/views/Home.vue')
+    component: () => import('@/Pages/AllWithRss.vue')
   },
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: () => import('@/views/Dashboard.vue'),
+    component: () => import('@/Pages/Dashboard.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/account',
     name: 'profile.edit',
-    component: () => import('@/views/Account.vue'),
+    component: () => import('@/Pages/Profile/Edit.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/mode',
     name: 'mode',
-    component: () => import('@/views/Mode.vue'),
+    component: () => import('@/Pages/Mode.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/mode/company',
     name: 'mode.company',
-    component: () => import('@/views/ModeCompany.vue'),
+    component: () => import('@/Pages/Mode.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/mode/candidate',
     name: 'mode.candidate',
-    component: () => import('@/views/ModeCandidate.vue'),
+    component: () => import('@/Pages/Mode.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/task-orders',
     name: 'taskOrders',
-    component: () => import('@/views/TaskOrders.vue'),
+    component: () => import('@/Pages/TaskOrder/TaskOrders.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/task-order/:slug',
     name: 'getTaskOrder',
-    component: () => import('@/views/TaskOrder.vue'),
+    component: () => import('@/Pages/TaskOrder/TaskOrder.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/top-up-balance',
     name: 'payments',
-    component: () => import('@/views/Payments.vue'),
+    component: () => import('@/Pages/Payments/TopUpBalance.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/balance',
     name: 'balance',
-    component: () => import('@/views/Balance.vue'),
+    component: () => import('@/Pages/Payments/Balance.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/withdraw',
     name: 'withdraw',
-    component: () => import('@/views/Withdraw.vue'),
+    component: () => import('@/Pages/Payments/Withdraw.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/my/specialist/profile',
     name: 'candidate.dashboard',
-    component: () => import('@/views/candidate/Profile.vue'),
+    component: () => import('@/Pages/Candidate/UserCandidateProfile.vue'),
     meta: { requiresAuth: true, mode: 'candidate' }
   },
   {
     path: '/my/specialist/my-job-responses',
     name: 'myJobResponses',
-    component: () => import('@/views/candidate/JobResponses.vue'),
+    component: () => import('@/Pages/Candidate/MyJobResponses.vue'),
     meta: { requiresAuth: true, mode: 'candidate' }
   },
   {
     path: '/my/specialist/my-task-responses',
     name: 'myTaskResponses',
-    component: () => import('@/views/candidate/TaskResponses.vue'),
+    component: () => import('@/Pages/Candidate/MyTaskResponses.vue'),
     meta: { requiresAuth: true, mode: 'candidate' }
   },
   {
     path: '/my/specialist/favorite-companies',
     name: 'favoriteCompanies',
-    component: () => import('@/views/candidate/FavoriteCompanies.vue'),
+    component: () => import('@/Pages/Candidate/MyFavoriteCompanies.vue'),
     meta: { requiresAuth: true, mode: 'candidate' }
   },
   {
     path: '/my/specialist/favorite-vacancies',
     name: 'favoriteVacancies',
-    component: () => import('@/views/candidate/FavoriteVacancies.vue'),
+    component: () => import('@/Pages/Candidate/MyFavoriteVacancies.vue'),
     meta: { requiresAuth: true, mode: 'candidate' }
   },
   {
     path: '/my/specialist/favorite-tasks',
     name: 'favoriteTasks',
-    component: () => import('@/views/candidate/FavoriteTasks.vue'),
+    component: () => import('@/Pages/Candidate/MyFavoriteTasks.vue'),
     meta: { requiresAuth: true, mode: 'candidate' }
   },
   {
     path: '/my/company/new-vacancy',
     name: 'newPostItem',
-    component: () => import('@/views/company/NewVacancy.vue'),
+    component: () => import('@/Pages/PostItems/Create.vue'),
     meta: { requiresAuth: true, mode: 'company' }
   },
   {
     path: '/my/company/new-task',
     name: 'newTask',
-    component: () => import('@/views/company/NewTask.vue'),
+    component: () => import('@/Pages/Tasks/Create.vue'),
     meta: { requiresAuth: true, mode: 'company' }
   },
   {
     path: '/my/company/edit-vacancy/:slug',
     name: 'editVacancy',
-    component: () => import('@/views/company/EditVacancy.vue'),
+    component: () => import('@/Pages/PostItems/Edit.vue'),
     meta: { requiresAuth: true, mode: 'company' }
   },
   {
     path: '/my/company/edit-task/:slug',
     name: 'editTask',
-    component: () => import('@/views/company/EditTask.vue'),
+    component: () => import('@/Pages/Tasks/Edit.vue'),
     meta: { requiresAuth: true, mode: 'company' }
   },
   {
     path: '/my/company/my-vacancies',
     name: 'myVacancies',
-    component: () => import('@/views/company/MyVacancies.vue'),
+    component: () => import('@/Pages/PostItems/MyPostItems.vue'),
     meta: { requiresAuth: true, mode: 'company' }
   },
   {
     path: '/my/company/my-tasks',
     name: 'myTasks',
-    component: () => import('@/views/company/MyTasks.vue'),
+    component: () => import('@/Pages/Tasks/MyTasks.vue'),
     meta: { requiresAuth: true, mode: 'company' }
   },
   {
     path: '/my/company/profile',
     name: 'company.dashboard',
-    component: () => import('@/views/company/Profile.vue'),
+    component: () => import('@/Pages/Company/CompanyProfile.vue'),
     meta: { requiresAuth: true, mode: 'company' }
   },
   {
     path: '/my/company/my-responses',
     name: 'myCompanyResponses',
-    component: () => import('@/views/company/MyResponses.vue'),
+    component: () => import('@/Pages/Company/MyResponses.vue'),
     meta: { requiresAuth: true, mode: 'company' }
   },
   {
     path: '/my/company/overview/candidate/:slug',
     name: 'candidate.overview',
-    component: () => import('@/views/company/OverviewCandidate.vue'),
+    component: () => import('@/Pages/Candidate/OverviewCandidate.vue'),
     meta: { requiresAuth: true, mode: 'company' }
   },
   {
     path: '/my/company/favorite-candidates',
     name: 'favoriteCandidates',
-    component: () => import('@/views/company/FavoriteCandidates.vue'),
+    component: () => import('@/Pages/Company/MyFavoriteCandidates.vue'),
     meta: { requiresAuth: true, mode: 'company' }
   },
   {
     path: '/overview/specialist/:slug',
     name: 'specialist.overview',
-    component: () => import('@/views/OverviewSpecialist.vue')
+    component: () => import('@/Pages/Candidate/OverviewCandidate.vue')
   },
   {
     path: '/company/new-partner-vacancy',
     name: 'newPostItemPartner',
-    component: () => import('@/views/company/NewPartnerVacancy.vue'),
+    component: () => import('@/Pages/PostItems/CreatePartner.vue'),
     meta: { requiresAuth: true, mode: 'company' }
   },
   {
     path: '/company/edit-partner-vacancy/:id',
     name: 'editVacancyPartner',
-    component: () => import('@/views/company/EditPartnerVacancy.vue'),
+    component: () => import('@/Pages/PostItems/EditPartner.vue'),
     meta: { requiresAuth: true, mode: 'company' }
   },
   {
     path: '/moderation-vacancies',
     name: 'moderationVacancies',
-    component: () => import('@/views/admin/ModerationVacancies.vue'),
+    component: () => import('@/Pages/PostItems/ModerationVacancies.vue'),
     meta: { requiresAuth: true, admin: true }
   },
   {
     path: '/moderation-tasks',
     name: 'moderationTasks',
-    component: () => import('@/views/admin/ModerationTasks.vue'),
+    component: () => import('@/Pages/Tasks/ModerationTasks.vue'),
     meta: { requiresAuth: true, admin: true }
   },
   {
     path: '/withdraw-requests',
     name: 'withdrawRequests',
-    component: () => import('@/views/admin/WithdrawRequests.vue'),
+    component: () => import('@/Pages/Payments/WithdrawRequests.vue'),
     meta: { requiresAuth: true, admin: true }
   },
   {
     path: '/administrator-page',
     name: 'adminPage',
-    component: () => import('@/views/admin/AdminPage.vue'),
+    component: () => import('@/Pages/Admin/Index.vue'),
     meta: { requiresAuth: true, admin: true }
   },
   {
     path: '/overview/company-profile/:slug',
     name: 'company.overview',
-    component: () => import('@/views/OverviewCompany.vue'),
+    component: () => import('@/Pages/Company/OverviewCompany.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/overview/vacancy/:slug',
     name: 'overviewVacancy',
-    component: () => import('@/views/OverviewVacancy.vue')
+    component: () => import('@/Pages/PostItems/Overview.vue')
   },
   {
     path: '/overview/task/:slug',
     name: 'overviewTask',
-    component: () => import('@/views/OverviewTask.vue')
+    component: () => import('@/Pages/Tasks/Task.vue')
   },
   {
     path: '/about',
@@ -227,42 +227,42 @@ const routes = [
   {
     path: '/how-to-pay',
     name: 'howToPay',
-    component: () => import('@/views/HowToPay.vue')
+    component: () => import('@/Pages/HowToPay.vue')
   },
   {
     path: '/all-tasks',
     name: 'allTasks',
-    component: () => import('@/views/AllTasks.vue')
+    component: () => import('@/Pages/Tasks/AllTasks.vue')
   },
   {
     path: '/all-vacancies',
     name: 'allVacancies',
-    component: () => import('@/views/AllVacancies.vue')
+    component: () => import('@/Pages/PostItems/Overview.vue')
   },
   {
     path: '/rss',
     name: 'rss',
-    component: () => import('@/views/Rss.vue')
+    component: () => import('@/Pages/Rss.vue')
   },
   {
     path: '/view-vacancy/:id',
     name: 'overviewPartnerVacancy',
-    component: () => import('@/views/OverviewPartnerVacancy.vue')
+    component: () => import('@/Pages/PostItems/OverviewPartnerVacancy.vue')
   },
   {
     path: '/freelance-tgb/:slug',
     name: 'overviewFreelanceTG',
-    component: () => import('@/views/OverviewFreelanceTG.vue')
+    component: () => import('@/Pages/PostItems/PostFreelanceTG.vue')
   },
   {
     path: '/oferta',
     name: 'oferta',
-    component: () => import('@/views/Oferta.vue')
+    component: () => import('@/Pages/Oferta.vue')
   },
   {
     path: '/add-catalog',
     name: 'addCatalog',
-    component: () => import('@/views/AddCatalog.vue')
+    component: () => import('@/Pages/AddCatalog.vue')
   }
 ]
 

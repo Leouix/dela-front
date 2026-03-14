@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from 'vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
 import AppLayout from "@/Layouts/AppLayout.vue";
 
 const props = defineProps({
@@ -25,7 +24,7 @@ const verificationLinkSent = computed(
     <AppLayout>
 
         <div class="dialog-window dialog-window-verify-email">
-            <Head title="Верификация аккаунта" />
+            
 
             <div class="mb-4 text-sm text-gray-600 notice-text">
                 Спасибо за регистрацию! Прежде чем начать, подтвердите, пожалуйста, свой

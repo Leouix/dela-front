@@ -1,6 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {Head} from "@inertiajs/vue3";
+
 
 
 const props = defineProps({
@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <Head title="Инструкция по оплате" />
+    
     <AppLayout>
         <div class="content">
             <header>

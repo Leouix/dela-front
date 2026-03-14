@@ -5,7 +5,7 @@ import RichEditor from "@/components/RichEditor.vue";
 import {useEditTaskStore} from "@/stores/editTask.js";
 import Multiselect from "vue-multiselect";
 import TaskDocuments from "@/components/TaskDocuments.vue";
-import {Head} from "@inertiajs/vue3";
+
 
 const props = defineProps({
     task: Object,
@@ -127,7 +127,7 @@ function togglePersonalEmails() {
 
 <template>
 
-    <Head title="Редактировать задачу" />
+    
     <AppLayout>
 
         <div class="edit-form-container">

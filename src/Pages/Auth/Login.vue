@@ -4,7 +4,7 @@ import InputError from '@/components/InputError.vue';
 import InputLabel from '@/components/InputLabel.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import TextInput from '@/components/TextInput.vue';
-import {Head, Link, useForm} from '@inertiajs/vue3';
+
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {route} from "ziggy-js";
 import {ref} from "vue";
@@ -44,7 +44,7 @@ const loginWithGithub = () => {
 </script>
 
 <template>
-    <Head title="Войти" />
+    
     <AppLayout>
 
             <div v-if="status" class="mb-4 text-sm font-medium text-green-600">

@@ -1,31 +1,41 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useCandidateStore} from "@/stores/candidate.js";
-import {ref} from "vue";
-import {Head, usePage} from "@inertiajs/vue3";
+
 import {useChatStore} from "@/stores/chatStore.js";
 
-const props = defineProps({
-    'candidate': Object,
-    'isFavorite': Boolean | null,
-    'notes': Object | null,
-    'specialistStatistic': Object | null,
-    'ban': Object,
-    'taskOrderInWorkSlugs': Object | null,
-});
+const candidate = ref(null)
+const isFavorite = ref(false)
+const notes = ref(null)
+const specialistStatistic = ref({ data: {} })
+const ban = ref({ isBanned: false })
+const taskOrderInWorkSlugs = ref([])
 
 const store = useCandidateStore();
 
-store.candidate = props.candidate;
-store.isFavorite = props.isFavorite;
-store.notes = props.notes;
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // candidate.value = response.data.candidate
+    // isFavorite.value = response.data.isFavorite
+    // notes.value = response.data.notes
+    // specialistStatistic.value = response.data.specialistStatistic
+    // ban.value = response.data.ban
+    // taskOrderInWorkSlugs.value = response.data.taskOrderInWorkSlugs
+}
+
+onMounted(() => {
+    fetchData()
+    store.candidate = candidate.value ?? {};
+    store.isFavorite = isFavorite.value ?? false;
+    store.notes = notes.value ?? [];
+})
 
 const action = ref('');
-const isBanned = ref(props.ban.isBanned);
+const isBanned = ref(ban.value.isBanned);
 const reason = ref();
 
-const page = usePage();
-const user = page.props.auth?.user;
+const user = ref(null)
 
 const applyAction = (e) => {
     if (!canBlock) {
@@ -43,9 +53,9 @@ function changeActions(e) {
     }
 }
 
-const canBlock = props.taskOrderInWorkSlugs.length === 0;
+const canBlock = taskOrderInWorkSlugs.value.length === 0;
 
-const isMyselfProfile = page.props.auth?.user?.id ? page.props.auth?.user?.id === props.candidate.user?.id : false;
+const isMyselfProfile = ref(false);
 
 function getLangName(language, index) {
     if (index === 0) {
@@ -67,7 +77,7 @@ function getCatName(category, index) {
 const chatStore = useChatStore();
 const startDialog = async () => {
     await axios.post('/api/start-dialog', {
-        user_candidate_id: props.candidate.id,
+        user_candidate_id: candidate.value?.id,
     }).then(response => {
         if (response.data) {
             chatStore.openDialog(response.data.dialog);
@@ -98,7 +108,7 @@ const startDialog = async () => {
                 <p>Категории:</p>
                 <div class="flex gap-2 flex-wrap">
                       <span
-                          v-for="(category, i) in props.candidate.categories"
+                          v-for="(category, i) in candidate?.categories"
                           :key="i"
                       >
                        {{ getCatName(category, i) }}
@@ -106,25 +116,25 @@ const startDialog = async () => {
                 </div>
 
                 <div class="candidate-info">
-                    <p>Имя: <span>{{ props.candidate.name }}</span></p>
-                    <p>Возраст: <span>{{ props.candidate.age }}</span></p>
-                    <p>Пол: <span>{{ props.candidate.gender }}</span></p>
-                    <p>Профессия: <span>{{ props.candidate.profession }}</span></p>
-                    <p>Лет опыта: <span>{{ props.candidate.experience }}</span></p>
-                    <p>Форма работы: <span>{{ props.candidate.form_job }}</span></p>
+                    <p>Имя: <span>{{ candidate?.name }}</span></p>
+                    <p>Возраст: <span>{{ candidate?.age }}</span></p>
+                    <p>Пол: <span>{{ candidate?.gender }}</span></p>
+                    <p>Профессия: <span>{{ candidate?.profession }}</span></p>
+                    <p>Лет опыта: <span>{{ candidate?.experience }}</span></p>
+                    <p>Форма работы: <span>{{ candidate?.form_job }}</span></p>
 
                     <p>Языки:</p>
                     <div class="flex gap-2 flex-wrap">
                       <span
-                          v-for="(language, i) in props.candidate.languages"
+                          v-for="(language, i) in candidate?.languages"
                           :key="i"
                       >
                         {{ getLangName(language, i) }}
                       </span>
                     </div>
 
-                    <p>Желаемый уровень ЗП: <span>{{ props.candidate.salary }}</span></p>
-                    <p>О себе: <span v-html="props.candidate.about"></span></p>
+                    <p>Желаемый уровень ЗП: <span>{{ candidate?.salary }}</span></p>
+                    <p>О себе: <span v-html="candidate?.about"></span></p>
                 </div>
 
             </div>
@@ -210,7 +220,7 @@ const startDialog = async () => {
             <div v-if="!isMyselfProfile" class="actions-area">
                 <div v-if="isBanned" class="is-banned">
                     <h4>Заблокирован</h4>
-                    <p>Причина: {{ props.ban.reason ?? 'Не указано' }}</p>
+                    <p>Причина: {{ ban?.reason ?? 'Не указано' }}</p>
                 </div>
 
                 <form @submit.prevent="applyAction">
@@ -232,7 +242,7 @@ const startDialog = async () => {
                         rows="10"
                     ></textarea>
 
-                    <input type="hidden" name="candidate_id" :value="props.candidate.id">
+                    <input type="hidden" name="candidate_id" :value="candidate?.id">
 
                     <div class="block-notice" v-if="action === 'ban' && !canBlock">
                         Вы не можете заблокировать пользователя, пока у него есть задача в работе.

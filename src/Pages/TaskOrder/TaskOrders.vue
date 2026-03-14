@@ -1,25 +1,32 @@
 <script setup>
+import { ref, computed, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { useUtilsStore } from "@/stores/utils.js";
-import { computed } from "vue";
-import {Head} from "@inertiajs/vue3";
 
-const props = defineProps({
-    taskOrders: Object | null,
-});
+
+const taskOrders = ref(null)
 
 const utilsStore = useUtilsStore();
 
-const items = computed(() => {
-    if (!props.taskOrders) return [];
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // taskOrders.value = response.data
+}
 
-    return props.taskOrders.map(item => ({
+onMounted(() => {
+    fetchData()
+})
+
+const items = computed(() => {
+    if (!taskOrders.value) return [];
+
+    return taskOrders.value.map(item => ({
         id: item.id,
         title: item.task_application.task.title,
         text: item.task_application.task.text,
 
         post_status: item.order_status_type.label,
-        post_status_name: item.order_status_type.name, // 👈 важно
+        post_status_name: item.order_status_type.name,
 
         created_at: utilsStore.formatLocalDate(item.created_at),
         deadline: utilsStore.formatLocalDate(
@@ -49,7 +56,7 @@ function getItemUrl(item) {
 
 <template>
 
-    <Head title="Задачи на выполнение" />
+    
     <AppLayout>
 
         <div class="overview">

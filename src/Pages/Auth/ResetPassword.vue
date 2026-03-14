@@ -4,7 +4,6 @@ import InputError from '@/components/InputError.vue';
 import InputLabel from '@/components/InputLabel.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import TextInput from '@/components/TextInput.vue';
-import { Head, useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const props = defineProps({
@@ -48,7 +47,7 @@ const generatePassword = () => {
 <template>
 
     <GuestLayout>
-        <Head title="Восстановить пароль" />
+        
 
         <form @submit.prevent="submit">
             <div>

@@ -1,30 +1,40 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
 import {useEditCompanyProfileStore} from "@/stores/editCompanyProfile.js";
 import ResponsiveNavLink from "@/components/ResponsiveNavLink.vue";
-import {Head, Link} from "@inertiajs/vue3";
 
-const props = defineProps({
-    company: Object,
-    isCompanyFilled: Boolean,
-    noFilledFields: Array,
-    customerStatistic: Object|null,
-});
+
+const company = ref(null)
+const isCompanyFilled = ref(false)
+const noFilledFields = ref([])
+const customerStatistic = ref({ data: {} })
 
 const store = useEditCompanyProfileStore();
 
-store.company = props.company;
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // company.value = response.data.company
+    // isCompanyFilled.value = response.data.isCompanyFilled
+    // noFilledFields.value = response.data.noFilledFields
+    // customerStatistic.value = response.data.customerStatistic
+}
+
+onMounted(() => {
+    fetchData()
+    store.company = company.value ?? {};
+})
 
 </script>
 
 <template>
-    <Head title="Мой Профиль" />
+    
     <AppLayout>
 
-        <div v-show="!props.isCompanyFilled" class="note-fill-about-company">
+        <div v-show="!isCompanyFilled" class="note-fill-about-company">
             Для того, чтобы опубликовать вакансию необходимо <a :href="route('company.dashboard')">заполнить информацию о компании</a>
             <div class="fields">
-                (<span v-for="field in props.noFilledFields">
+                (<span v-for="field in noFilledFields">
                     "{{field}}"
                 </span>)
             </div>
@@ -38,7 +48,7 @@ store.company = props.company;
                 Публичная страница: <a :href="'/overview/company-profile/' + store.company.slug">{{store.company.title}}</a>
             </div>
 
-            <div class="email-company">Email: {{store.company.user.email}}</div>
+            <div class="email-company">Email: {{store.company.user?.email}}</div>
             <form id="edit-company-form" @submit.prevent="store.edit" method="post" enctype="multipart/form-data" class="edit-form dbb-form">
                 <div class="form-group">
                     <label for="title" class="form-label">Название компании</label>

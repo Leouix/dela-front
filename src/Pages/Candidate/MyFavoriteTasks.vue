@@ -1,20 +1,23 @@
 <script setup>
-
+import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {onMounted} from "vue";
 import {useFavoriteStore} from "@/stores/favorites.js";
 import {useUtilsStore} from "@/stores/utils.js";
-import {Head} from "@inertiajs/vue3";
 
-const props = defineProps({
-    favoriteTasks: Object,
-});
+
+const favoriteTasks = ref([])
 
 const storeFavorite = useFavoriteStore();
 const utilStore = useUtilsStore();
 
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // favoriteTasks.value = response.data
+}
+
 onMounted(() => {
-    storeFavorite.favoriteTasks = props.favoriteTasks.map(vacancy => {
+    fetchData()
+    storeFavorite.favoriteTasks = favoriteTasks.value.map(vacancy => {
         vacancy.isFavorite = true;
         return vacancy;
     });
@@ -25,7 +28,7 @@ onMounted(() => {
 
 <template>
 
-    <Head title="Избранные задачи" />
+    
     <AppLayout>
 
         <div v-for="task in storeFavorite?.favoriteTasks" class="favorite-vacancy-item">

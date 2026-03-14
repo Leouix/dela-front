@@ -3,7 +3,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import {useCreatePostItemStore} from "@/stores/createPostItem.js";
 import {ref} from "vue";
 import RichEditor from "@/components/RichEditor.vue";
-import {Head} from "@inertiajs/vue3";
+
 
 const props = defineProps({
     isCompanyFilled: Boolean,
@@ -18,7 +18,7 @@ const text = ref('');
 
 
 <template>
-    <Head title="Создать вакансию" />
+    
     <AppLayout>
 
         <div class="create-form-container">

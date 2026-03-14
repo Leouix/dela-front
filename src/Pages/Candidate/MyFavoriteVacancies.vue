@@ -1,20 +1,23 @@
 <script setup>
-
+import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {onMounted} from "vue";
 import {useFavoriteStore} from "@/stores/favorites.js";
 import {useUtilsStore} from "@/stores/utils.js";
-import {Head} from "@inertiajs/vue3";
 
-const props = defineProps({
-    favoriteVacancies: Object,
-});
+
+const favoriteVacancies = ref([])
 
 const storeFavorite = useFavoriteStore();
 const utilStore = useUtilsStore();
 
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // favoriteVacancies.value = response.data
+}
+
 onMounted(() => {
-    storeFavorite.favoriteVacancies = props.favoriteVacancies.map(vacancy => {
+    fetchData()
+    storeFavorite.favoriteVacancies = favoriteVacancies.value.map(vacancy => {
         vacancy.isFavorite = true;
         return vacancy;
     });
@@ -24,7 +27,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head title="Избранные вакансии" />
+    
     <AppLayout>
 
         <div v-for="vacancy in storeFavorite?.favoriteVacancies" class="favorite-vacancy-item">

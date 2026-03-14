@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 import {useNoticeSuccessStore} from "@/stores/notice-success.js";
 import {useNoticeErrorStore} from "@/stores/notice-error.js";
-import {ref} from "vue";
+import axios from "axios";
 
 export const useAddCandidateStore = defineStore('addCandidateStore', {
     state: ()=> {

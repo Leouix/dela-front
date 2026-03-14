@@ -1,27 +1,37 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {Head, usePage} from "@inertiajs/vue3";
+
 import {useUtilsStore} from "@/stores/utils.js";
 import {useBalanceStore} from "@/stores/balance.js";
 
-const props = defineProps({
-    balanceReserved: Object,
-    transactions: Object,
-    balanceReservedAmount: Number | null,
-});
+const balanceReserved = ref([])
+const transactions = ref([])
+const balanceReservedAmount = ref(0)
 
 const store = useBalanceStore();
-const page = usePage();
+
+const user = ref(null)
 
 const util = useUtilsStore();
-const user = page.props.auth?.user;
 
-store.availableBalance = user.availableBalance;
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // balanceReserved.value = response.data.balanceReserved
+    // transactions.value = response.data.transactions
+    // balanceReservedAmount.value = response.data.balanceReservedAmount
+    // user.value = response.data.user
+}
+
+onMounted(() => {
+    fetchData()
+    store.availableBalance = user.value?.availableBalance ?? 0;
+})
 
 </script>
 
 <template>
-    <Head title="Баланс" />
+    
     <AppLayout>
 
         <div class="payments-content">
@@ -31,10 +41,10 @@ store.availableBalance = user.availableBalance;
                 <div>
 
                     <div class="available-balance-area">
-                        <p class="balance-plus">Доступно: {{user.availableBalance}}</p>
+                        <p class="balance-plus">Доступно: {{user?.availableBalance}}</p>
                     </div>
 
-                    <p v-if="user?.mode === 'company'" class="balance-minus">Общая сумма баланса: {{user.balance_total?.amount ?? 0}}</p>
+                    <p v-if="user?.mode === 'company'" class="balance-minus">Общая сумма баланса: {{user?.balance_total?.amount ?? 0}}</p>
                 </div>
                 <div class="balance-area" >
                     <div v-if="user?.mode === 'company'" class="top-up-balance">
@@ -47,7 +57,7 @@ store.availableBalance = user.availableBalance;
             </div>
 
             <div v-if="user?.mode === 'company'" class="balance-reserve">
-                <p >Резерв по задачам: {{props.balanceReservedAmount}}</p>
+                <p >Резерв по задачам: {{balanceReservedAmount}}</p>
 
                 <table class="data-table reserved-table">
                     <thead>
@@ -58,7 +68,7 @@ store.availableBalance = user.availableBalance;
                     </thead>
 
                     <tr
-                        v-for="(balanceReservedItem) in props.balanceReserved"
+                        v-for="(balanceReservedItem) in balanceReserved"
                         :key="balanceReservedItem.id"
                     >
                         <td class="date-column">
@@ -92,7 +102,7 @@ store.availableBalance = user.availableBalance;
                     </thead>
 
                     <tr
-                        v-for="(customerTransaction) in props.transactions"
+                        v-for="(customerTransaction) in transactions"
                         :key="customerTransaction.id"
                     >
 

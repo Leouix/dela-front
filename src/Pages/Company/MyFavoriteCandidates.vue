@@ -1,18 +1,21 @@
 <script setup>
-
-import {onMounted} from "vue";
+import { ref, onMounted } from 'vue'
 import {useFavoriteStore} from "@/stores/favorites.js";
 import AppLayout from "@/Layouts/AppLayout.vue";
-import {Head} from "@inertiajs/vue3";
 
-const props = defineProps({
-    favoriteCandidates: Object,
-})
+
+const favoriteCandidates = ref({ data: [] })
 
 const store = useFavoriteStore();
 
+async function fetchData() {
+    // TODO: axios.get('/api/...')
+    // favoriteCandidates.value = response.data
+}
+
 onMounted(() => {
-    store.favoriteCandidates = props.favoriteCandidates.data.map((candidate) => {
+    fetchData()
+    store.favoriteCandidates = favoriteCandidates.value.data.map((candidate) => {
         candidate.isFavorite = true;
         return candidate;
     });
@@ -22,7 +25,7 @@ onMounted(() => {
 
 <template>
 
-    <Head title="Избранные специалисты" />
+    
     <AppLayout>
 
         <h1>Избранные мастера</h1>
