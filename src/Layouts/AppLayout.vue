@@ -1,10 +1,10 @@
 <script setup>
-import MainHeader from "@/components/MainHeader.vue";
-import MainFooter from "@/components/MainFooter.vue";
-import MainSidebar from "@/components/MainSidebar.vue";
+import MainHeader from "../components/MainHeader.vue";
+import MainFooter from "../components/MainFooter.vue";
+import MainSidebar from "../components/MainSidebar.vue";
 import {computed, onMounted} from "vue";
-import {useChatStore} from "@/stores/chatStore.js";
-import {useTaskOrderStore} from "@/stores/taskOrder.js";
+import {useChatStore} from "../stores/chatStore.js";
+import {useTaskOrderStore} from "../stores/taskOrder.js";
 
 const userRole = null;
 const user = null;

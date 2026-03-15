@@ -1,11 +1,11 @@
 <script setup>
-import {useHeaderStore} from "@/stores/header.js";
-import MobileMenu from "@/components/MobileMenu.vue";
-import SupportModal from "@/components/SupportModal.vue";
+import {useHeaderStore} from "../stores/header.js";
+import MobileMenu from "../components/MobileMenu.vue";
+import SupportModal from "../components/SupportModal.vue";
 import {computed} from "vue";
-import ToggleUserModeSmall from "@/components/ToggleUserModeSmall.vue";
-import {useWindowSize} from "@/stores/windowSize.js";
-import Auth from "@/components/Auth.vue";
+import ToggleUserModeSmall from "../components/ToggleUserModeSmall.vue";
+import {useWindowSize} from "../stores/windowSize.js";
+import Auth from "../components/Auth.vue";
 
 const store = useHeaderStore();
 
