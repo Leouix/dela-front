@@ -12,6 +12,8 @@ const store = useHeaderStore();
 const user = null;
 const userRole = null;
 
+console.log({user})
+
 const { width } = useWindowSize()
 
 const isMobileSize = computed(() => width.value < 769)

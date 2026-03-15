@@ -39,13 +39,17 @@ export const useAuthStore = defineStore("auth", {
 
       try {
         const res = await api.get("/user")
-        this.user = res.data
+        this.user = res.data.user
       } catch (error) {
         this.logout()
       }
     },
 
-    logout() {
+    async logout() {
+      try {
+        await api.post("/logout")
+      } catch (e) {}
+
       this.user = null
       this.token = null
       localStorage.removeItem("token")
