@@ -152,22 +152,6 @@ onMounted(() => {
                 <input type="number" id="experience" name="experience" v-model="store.candidateDto.experience" min="0" max="100"/>
             </div>
 
-
-            <div class="form-group">
-                <label for="age">Возраст:</label>
-                <input type="number" id="age" name="age" v-model="store.candidateDto.age" max="150" min="1"/>
-            </div>
-
-            <div class="form-group">
-                <label for="gender">Пол:</label>
-                <select id="gender" name="gender" v-model="store.candidateDto.gender">
-                    <option value="">Не выбрано</option>
-                    <option value="М">М</option>
-                    <option value="Ж">Ж</option>
-                    <option value="Другое">Другое</option>
-                </select>
-            </div>
-
             <div class="form-group">
                 <label for="form_job">Форма работы:</label>
                 <select id="form_job" name="form_job" v-model="store.candidateDto.form_job">
