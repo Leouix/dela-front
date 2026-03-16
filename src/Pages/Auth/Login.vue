@@ -7,7 +7,7 @@ import AppLayout from "@/Layouts/AppLayout.vue"
 import Checkbox from '@/components/Checkbox.vue'
 import InputError from '@/components/InputError.vue'
 import InputLabel from '@/components/InputLabel.vue'
-import PrimaryButton from '@/components/PrimaryButton.vue'
+import PrimaryButton from '~/components/PrimaryButton.vue'
 import TextInput from '@/components/TextInput.vue'
 
 const router = useRouter()
@@ -29,7 +29,7 @@ const loginWithGithub = () => {
 
 const submit = async () => {
   errors.value = {}
-  
+
   const success = await authStore.login({
     email: email.value,
     password: password.value,
@@ -58,7 +58,7 @@ const submit = async () => {
 
     <form class="form-login-register" @submit.prevent="submit">
       <h1>Вход в аккаунт</h1>
-      
+
       <div>
         <InputLabel for="email" value="Email" />
 
@@ -86,7 +86,7 @@ const submit = async () => {
             autocomplete="current-password"
           />
 
-          <div 
+          <div
             :class="['toggle-visibility', showPassword ? 'password-hide' : 'password-show']"
             @click="showPassword = !showPassword"
           ></div>
