@@ -1,9 +1,9 @@
 <script setup>
-import {useHeaderStore} from "@/stores/header.js";
-import {getUsePage} from "@/composables/usePage.js";
+import {useHeaderStore} from "../stores/header.js";
+import {getUsePage} from "../composables/usePage.js";
 import {computed, nextTick, onMounted, onUnmounted, ref, watch} from "vue";
-import Auth from "@/components/Auth.vue";
-import {useSupportStore} from "@/stores/support.js";
+import Auth from "../components/Auth.vue";
+import {useSupportStore} from "../stores/support.js";
 
 const supportStore = useSupportStore();
 
